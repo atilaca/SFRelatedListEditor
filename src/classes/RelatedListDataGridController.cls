@@ -459,6 +459,9 @@ public with sharing class RelatedListDataGridController {
                             String datetimeStr = defaultValue.replace('T', ' ').replace('000Z', '');
                             relatedObject.put(field, Datetime.valueOf(datetimeStr));                                            
                         }
+		    	else if(sfield.getType() == Schema.DisplayType.PERCENT){
+                            relatedObject.put(field, Decimal.valueOf(defaultValue));                                            
+                        }
                         else if(sfield.getType() == Schema.DisplayType.REFERENCE &&
                                 defaultValue.toUpperCase().startsWith('SELECT')){
                             System.debug('Set default value for ' + sfield.getName() + ' from ' + defaultValue);                                                                                    
